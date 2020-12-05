@@ -6,15 +6,12 @@ import sys
 import re
 
 import pandas as pd
-import sqlite3
-import datetime
 import logging
-
-import requests
 
 # Gets age and gender from r4r style title
 def get_age_gender_from_title(text):
     
+    # TODO add more examples of age / gender formatting
     gender_re = r'(?<=\[)[A-z](?=4[A-z]\])'
     age_re = r'[0-9]* *(?=\[[A-z]4[A-z]\])'
 
@@ -45,7 +42,6 @@ def submission_to_row(submission):
 
 
 # Converts a comment into row form to be put in a pandas dataframe
-
 def comment_to_row(comment):
 
     author = None
@@ -92,7 +88,6 @@ def subreddit_download_to_csv(subreddit, reddit, api, limit=None, start_date = N
             pass
     
     df = pd.DataFrame(output)
-    print(df)
     df.to_csv('1_year_training.csv')
 
 
